@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useGeoLocation } from "../hook/useGeoLocation";
+// import { useGeoLocation } from "../hook/useGeoLocation";
 import { registrarDatosAsincrono } from "../redux/actions/actionProducts";
 import { useNavigate } from 'react-router-dom';
 
@@ -9,23 +8,20 @@ const TestsGL = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const [latitude, longitude, getLocation] = useGeoLocation()
+    // const [latitude, longitude] = useGeoLocation()
 
     // const { latitude, longitude } = coordinates
 
-    useEffect(() => {
-        // getLocation()
-    }, [])
-
     const iniciarRecorrido = () => {
         setInterval(() => {
-            getLocation()
-            console.log(latitude, longitude)
-            const datos = {
-                latitud: latitude,
-                longitud: longitude
+            navigator.geolocation.getCurrentPosition((position) => {
+                const datos = {
+                latitud: position.coords.latitude,
+                longitud: position.coords.longitude
             }
-            dispatch(registrarDatosAsincrono(datos))
+                dispatch(registrarDatosAsincrono(datos))
+            })
+                        
         }, 10000)
     }
 
