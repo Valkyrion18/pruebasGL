@@ -19,6 +19,7 @@ const TestsGL = () => {
                 latitud: position.coords.latitude,
                 longitud: position.coords.longitude
             }
+                console.log(datos)
                 dispatch(registrarDatosAsincrono(datos))
             })
                         
