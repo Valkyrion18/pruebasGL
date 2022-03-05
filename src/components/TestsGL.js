@@ -35,7 +35,6 @@ const TestsGL = () => {
 
     const finalizarRecorrido = () => {
         reference.current.autofocus = true;
-        console.log(reference)
         navigate('/map')
     }
 

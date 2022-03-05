@@ -4,7 +4,8 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import { MapContainer } from '../components/ShowMap2';
+import  ShowMap  from '../components/ShowMap'
+// import { MapContainer } from '../components/ShowMap2';
 import TestsGL from '../components/TestsGL';
 
 const AppRouter = () => {
@@ -13,7 +14,8 @@ const AppRouter = () => {
             <Router>
                 <TestsGL />
                 <Routes>
-                    <Route path="/map" element={<MapContainer />} />
+                    <Route path="/map" element={<ShowMap />} />
+                    {/* <Route path="/map" element={<MapContainer />} /> */}
                 </Routes>
             </Router>
         </div>

@@ -1,16 +1,20 @@
 import '../styles/styles-map.css'
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { mostrarProductosAsincrono } from '../redux/actions/actionProducts';
 import { MapContainer, TileLayer } from "react-leaflet";
 export const GOOGLE_API_KEY = 'AIzaSyCOnA0TkClNxx4R_ZF9O2nEmY7HEjs8Am8';
 
 const ShowMap = () => {
 
-    // const [state, setState] = useState({
-    //     currentLocation: { lat: 5.0638835, lng: -75.522555 },
-    //     zoom: 13,
-    //   });
+    const [state, setState] = useState({
+        currentLocation: { lat: 5.0638835, lng: -75.522555 },
+        zoom: 13,
+        config: {
+            minZoom: 7,
+            maxZoom: 18,
+          }
+      });
 
     const dispatch = useDispatch()
 
@@ -39,14 +43,17 @@ const ShowMap = () => {
                     </div>
                 ))
             } */}
-            <MapContainer center={state.currentLocation} zoom={state.zoom}>
-                <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    className='map-dimmensions'
-                />
-                {/* <Markers venues={state.data.venues} /> */}
-            </MapContainer>
+            <div className='container'>
+                <MapContainer center={state.currentLocation} zoom={state.zoom}>
+                    <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        className='map-dimmensions'
+                    />
+                    {/* <Markers venues={state.data.venues} /> */}
+                </MapContainer>
+            </div>
+            
         </div>
     )
 }
