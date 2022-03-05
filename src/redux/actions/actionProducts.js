@@ -8,7 +8,7 @@ import { addDoc, collection, getDocs } from "@firebase/firestore";
 export const registrarDatosAsincrono = (newElement) => {
 
     return (dispatch) => {
-        addDoc(collection(db, "bdCoordenadas"), newElement)
+        addDoc(collection(db, "bdCoordenadas2"), newElement)
             .then(resp => {
                 dispatch(registrarDatos(newElement))
                 dispatch(mostrarProductosAsincrono())
@@ -31,7 +31,7 @@ export const registrarDatos = (product) => {
 export const mostrarProductosAsincrono = () => {
     return async (dispatch) => {
 
-        const querySnapshot = await getDocs(collection(db, "bdCoordenadas")); 
+        const querySnapshot = await getDocs(collection(db, "bdCoordenadas2")); 
         const datos = []; 
         querySnapshot.forEach((doc) => {
             datos.push({
